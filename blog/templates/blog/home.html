@@ -1,0 +1,59 @@
+{% extends 'blog/base.html' %}
+
+{% block title %} Home page  {% endblock title%}
+{% block main %}
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('static/blog/img/home-bg.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          <h1>وبلاگ من</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Main Conte home_pageant -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+    {% for article in articles%}
+      <div class="post-preview">
+        <a href="{% url 'blog:detail' article.slug%}">
+          <h2 class="post-title">
+            {{article.title}}
+          </h2>
+          <h3 class="post-subtitle">
+            {{article.description|truncatechars:80}}
+          </h3>
+        </a>
+        <p class="post-meta">نوشته شده توسط
+          <a href="#">بابک خضزی</a>
+          {{article.jpublish}}</p>
+        <div>
+          {% for cat in article.category_published.all %}
+            <a href="{% url 'blog:category' cat.slug %}">#{{cat.title}}</a>
+            
+          {% endfor %}
+        </div>
+      </div>
+      <hr>
+    {% endfor %}
+      <!-- Pager -->
+      <div class="clearfix pager-button"> 
+        {% if  articles.has_previous %}
+          <a class="btn btn-primary float-right ml-3" href="{% url 'blog:home' articles.previous_page_number%} ">پست های جدید &rarr;</a>
+        {% endif %}     
+        {% if  articles.has_next%}
+          <a class="btn btn-primary float-right" href="{% url 'blog:home' articles.next_page_number%} ">پست های قدیمی &larr;</a>
+        {% endif %}
+  
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock%}
