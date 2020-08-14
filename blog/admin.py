@@ -2,6 +2,8 @@ from django.contrib import admin
 from .models import Article, Category
 
 # admin.site.disable_action('delete_selected') # from remove actions
+# Change header
+admin.site.site_header = "صفحه مدریت جنگو ( Django )"
 # Register your models here.
 def make_published(modeladmin, request,queryset):
     rows_update = queryset.update(status = 'p')
@@ -39,7 +41,7 @@ class ArticleAdmin(admin.ModelAdmin):
     actions = [make_published,make_draft]
 
     def category_to_str(self, obj):
-        return ",".join([category.title for category in obj.category_published()])
+        return ",".join([category.title for category in obj.active()])
     category_to_str.short_description = 'دسته بندی ها'
 
 admin.site.register(Article, ArticleAdmin)
