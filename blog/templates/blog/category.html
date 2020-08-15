@@ -2,10 +2,11 @@
 {% block header %}
   <h3 class="alert alert-primary text-center"> دسته بندی : {{category.title}} </h3>
 {% endblock header %}
+
 {% block previous_page_url %}
   {% url 'blog:category' category.slug articles.previous_page_number%}
 {% endblock %}
+
 {% block next_page_url %}
   {% url 'blog:category' category.slug articles.next_page_number%}
 {% endblock %}
-

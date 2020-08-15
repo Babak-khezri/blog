@@ -1,5 +1,6 @@
 /*
     DJANGO Admin styles
+    hello
 */
 
 @import url(fonts.css);
@@ -9,19 +10,19 @@ body {
     padding: 0;
     font-size: 14px;
     font-family: "Tanha","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
-    color: rgb(51, 51, 51);
-    background: rgb(179, 176, 196);
+    color: #333;
+    background: #fff;
 }
 
 /* LINKS */
 
 a:link, a:visited {
-    color: #000000;
+    color: #d00000;
     text-decoration: none;
 }
 
 a:focus, a:hover {
-    color: #8e0000;
+    color: #280000;
 }
 
 a:focus {
@@ -33,7 +34,7 @@ a img {
 }
 
 a.section:link, a.section:visited {
-    color: #e18f25;
+    color: #fff;
     text-decoration: none;
 }
 
@@ -59,8 +60,8 @@ h1,h2,h3,h4,h5 {
 h1 {
     margin: 0 0 20px;
     font-weight: 300;
-    font-size: 25px;
-    color: #000000;
+    font-size: 20px;
+    color: #666;
 }
 
 h2 {
@@ -247,7 +248,7 @@ table {
 }
 
 td, th {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 16px;
     border-bottom: 1px solid #eee;
     vertical-align: top;

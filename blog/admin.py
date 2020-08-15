@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import Article, Category
 
 # admin.site.disable_action('delete_selected') # from remove actions
+
 # Change header
 admin.site.site_header = "صفحه مدریت جنگو ( Django )"
 # Register your models here.
@@ -33,15 +34,18 @@ class CategoryAdmin(admin.ModelAdmin):
 admin.site.register(Category, CategoryAdmin)
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('title','thumbnail_tag','slug','jpublish','status','category_to_str') # Add information's for show in first look
-    list_filter = ('publish','status') # Add filters
+    list_display = ('title','thumbnail_tag','slug','author_full_name','jpublish','status','category_to_str') # Add information's for show in first look
+    list_filter = ('publish','status','author') # Add filters
     search_fields = ('title', 'description') # Add searchbar by args
     prepopulated_fields = {'slug' : ('title',)} # Auto add slug from title
     ordering = ['status','publish'] # In jango in first order models by id by this we choice our own ordring
     actions = [make_published,make_draft]
 
     def category_to_str(self, obj):
-        return ",".join([category.title for category in obj.active()])
+        return ",".join([category.title for category in obj.category.active()])
     category_to_str.short_description = 'دسته بندی ها'
 
+    def author_full_name(self,obj):
+        return obj.author.get_full_name()
+    author_full_name.short_description = 'نویسنده'
 admin.site.register(Article, ArticleAdmin)
