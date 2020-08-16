@@ -41,8 +41,8 @@
 					{% endfor %}
 				</div>
 			{% endif %}
-			<div class="wrap-login100">
-				<form class="login100-form validate-form">
+			<div class="wrap-login100">{% csrf_token %}
+				<form class="login100-form validate-form" method="POST"> {% csrf_token %}
 					<span class="login100-form-title p-b-26 myfont">
 						ورود به سایت
 					</span>
