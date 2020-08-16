@@ -17,12 +17,12 @@ body {
 /* LINKS */
 
 a:link, a:visited {
-    color: #d00000;
+    color: #0030e0;
     text-decoration: none;
 }
 
 a:focus, a:hover {
-    color: #280000;
+    color: #000928;
 }
 
 a:focus {
@@ -841,10 +841,11 @@ table#change-history tbody th {
 }
 
 #header a:link, #header a:visited {
-    color: #fff;
+    color: #fff700;
 }
 
 #header a:focus , #header a:hover {
+    color: #c75d01;
     text-decoration: underline;
 }
 
